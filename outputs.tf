@@ -16,7 +16,7 @@ output "storagegateway_nfs_file_shares_bucket_region" {
 }
 output "storagegateway_nfs_file_shares_cache_attributes" {
   description = "Map of cache_attributes values across all storagegateway_nfs_file_shares, keyed the same as var.storagegateway_nfs_file_shares"
-  value       = { for k, v in aws_storagegateway_nfs_file_share.storagegateway_nfs_file_shares : k => v.cache_attributes if v.cache_attributes != null && length(v.cache_attributes) > 0 }
+  value       = { for k, v in aws_storagegateway_nfs_file_share.storagegateway_nfs_file_shares : k => one(v.cache_attributes) if v.cache_attributes != null && length(v.cache_attributes) > 0 }
 }
 output "storagegateway_nfs_file_shares_client_list" {
   description = "Map of client_list values across all storagegateway_nfs_file_shares, keyed the same as var.storagegateway_nfs_file_shares"
@@ -56,7 +56,7 @@ output "storagegateway_nfs_file_shares_location_arn" {
 }
 output "storagegateway_nfs_file_shares_nfs_file_share_defaults" {
   description = "Map of nfs_file_share_defaults values across all storagegateway_nfs_file_shares, keyed the same as var.storagegateway_nfs_file_shares"
-  value       = { for k, v in aws_storagegateway_nfs_file_share.storagegateway_nfs_file_shares : k => v.nfs_file_share_defaults if v.nfs_file_share_defaults != null && length(v.nfs_file_share_defaults) > 0 }
+  value       = { for k, v in aws_storagegateway_nfs_file_share.storagegateway_nfs_file_shares : k => one(v.nfs_file_share_defaults) if v.nfs_file_share_defaults != null && length(v.nfs_file_share_defaults) > 0 }
 }
 output "storagegateway_nfs_file_shares_notification_policy" {
   description = "Map of notification_policy values across all storagegateway_nfs_file_shares, keyed the same as var.storagegateway_nfs_file_shares"
